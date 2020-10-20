@@ -641,7 +641,9 @@ def handle_message(event):
                 print('ok-13')
                 setting2[user_id]['setting3'] = False
                 setting_youtube[user_id]['ctg'] = msg_text
-                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],'0',[user_id],setting_youtube[user_id]['ctg'])
+                id_list = []
+                id_list.append(user_id)
+                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],'0',id_list,setting_youtube[user_id]['ctg'])
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='アップできたよ！'))
                 return
             except Exception as e:
