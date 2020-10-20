@@ -607,14 +607,12 @@ def handle_message(event):
                 setting2[user_id]['setting1'] = False
                 try:
                     if 'youtu.be' in msg_text or 'youtube.com' in msg_text:
-                        url_ = checkURL(msg_text)
-                        if url_ == True:
-                            print('url OK')
-                            URL = msg_text
-                            setting_youtube[user_id] = {'url':URL,'text':'','ctg':''}
-                            setting2[user_id]['setting2'] = True
-                            line_bot_api.reply_message(msg_from,TextSendMessage(text='URLを設定したよ！\n次はURLの動画についてのコメントを送信してね！！'))
-                            return
+                        print('url OK')
+                        URL = msg_text
+                        setting_youtube[user_id] = {'url':URL,'text':'','ctg':''}
+                        setting2[user_id]['setting2'] = True
+                        line_bot_api.reply_message(msg_from,TextSendMessage(text='URLを設定したよ！\n次はURLの動画についてのコメントを送信してね！！'))
+                        return
                 except Exception as e:
                     print (str(e))
                     return
@@ -643,7 +641,7 @@ def handle_message(event):
                 setting_youtube[user_id]['ctg'] = msg_text
                 id_list = []
                 id_list.append(user_id)
-                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],'0',id_list,setting_youtube[user_id]['ctg'])
+                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],"0",id_list,setting_youtube[user_id]['ctg'])
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='アップできたよ！'))
                 return
             except Exception as e:
