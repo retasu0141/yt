@@ -35,7 +35,8 @@ def checkURL(url):
         print ("OK:" + url )
         f.close()
         return True
-    except:
+    except Exception as e:
+        print (str(e))
         print ("NotFound:" + url)
         return False
 
@@ -333,7 +334,7 @@ def youtube_set(url,text,point,point_id,ctg):
     cur = conn.cursor()
     cur.execute("ROLLBACK")
     conn.commit()
-    cur.execute('SELECT * FROM db')
+    cur.execute('SELECT * FROM ydb')
     cur.execute("insert into ydb values('{url}','{text}','{point}','{point_id}','{ctg}')".format(url=url,text=text,point=point,point_id=point_id,ctg=ctg))
     conn.commit()
     return True
@@ -345,7 +346,7 @@ def geturl():
     cur = conn.cursor()
     cur.execute("ROLLBACK")
     conn.commit()
-    cur.execute('SELECT * FROM db')
+    cur.execute('SELECT * FROM ydb')
     URL_list = []
     for row in cur:
         if 'youtu.be' in row[0] or 'youtube.com' in row[0]:
@@ -361,7 +362,7 @@ def getdata(url):
     cur = conn.cursor()
     cur.execute("ROLLBACK")
     conn.commit()
-    cur.execute('SELECT * FROM db')
+    cur.execute('SELECT * FROM ydb')
     for row in cur:
         if url == row[0]:
             print(row)
@@ -373,7 +374,7 @@ def IDcheck(ID):
     cur = conn.cursor()
     cur.execute("ROLLBACK")
     conn.commit()
-    cur.execute('SELECT * FROM db')
+    cur.execute('SELECT * FROM ydb')
     '''
     with open('date.json','r') as f:
         date = json.load(f)
@@ -392,7 +393,7 @@ def seve(ID,text):
         cur = conn.cursor()
         cur.execute("ROLLBACK")
         conn.commit()
-        cur.execute('SELECT * FROM db')
+        cur.execute('SELECT * FROM ydb')
         #text = setting_[ID]['text']
         for row in cur:
             if ID in row:
@@ -428,7 +429,7 @@ def seve2(ID,URL):
         cur = conn.cursor()
         cur.execute("ROLLBACK")
         conn.commit()
-        cur.execute('SELECT * FROM db')
+        cur.execute('SELECT * FROM ydb')
         for row in cur:
             if ID in row:
                 print(row)
@@ -455,7 +456,7 @@ def seve3(URL,id_list):
         cur = conn.cursor()
         cur.execute("ROLLBACK")
         conn.commit()
-        cur.execute('SELECT * FROM db')
+        cur.execute('SELECT * FROM ydb')
         for row in cur:
             if ID in row:
                 print(row)
@@ -482,7 +483,7 @@ def seve4(URL,point):
         cur = conn.cursor()
         cur.execute("ROLLBACK")
         conn.commit()
-        cur.execute('SELECT * FROM db')
+        cur.execute('SELECT * FROM ydb')
         for row in cur:
             if ID in row:
                 print(row)
