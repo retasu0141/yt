@@ -627,8 +627,9 @@ def handle_message(event):
                 items = {'items': [{'type': 'action','action': {'type': 'message','label': '音楽','text': '音楽'}},{'type': 'action','action': {'type': 'message','label': 'おもしろ','text': 'おもしろ'}},{'type': 'action','action': {'type': 'message','label': 'VTuber','text': 'VTuber'}}]}
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='コメントを設定できたよ！\n次は動画のカテゴリーを決めて送信してね！\nカテゴリーは好きに作れるよ！\n\n迷ったときは下のボタンからも送信できるよ！',quick_reply=items))
             except Exception as e:
-                line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
                 print (str(e))
+                line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+
         if setting2[user_id]['setting3'] == True and user_id == setting_[user_id]['ID']:
             try:
                 print('ok-13')
@@ -637,8 +638,9 @@ def handle_message(event):
                 youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],0,[user_id],setting_youtube[user_id]['ctg'])
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='アップできたよ！'))
             except Exception as e:
-                line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
                 print (str(e))
+                line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+
         else:
             items = {'items': [{'type': 'action','action': {'type': 'message','label': '設定する','text': '設定する'}},{'type': 'action','action': {'type': 'message','label': 'メッセージ送信','text': 'メッセージ送信'}}]}
             line_bot_api.reply_message(msg_from,TextSendMessage(text='表示する文字を設定したいときは\n「設定する」\nと送信してね！\n\nひとこと連絡を使う場合は\n「メッセージ送信」\nと送信してね！\n\n下のボタンからも送信できるよ！',quick_reply=items))
