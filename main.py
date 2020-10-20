@@ -436,7 +436,7 @@ def seve2(ID,URL):
                 dbID = row[0]
                 print('ok3')
                 print(dbID)
-                cur.execute("UPDATE ydb SET text = '{text}' WHERE url='{url}';".format(text=ID,url=URL))
+                cur.execute("UPDATE ydb SET text = '{text}' WHERE url='{url}';".format(text=URL,url=ID))
                 conn.commit()
                 print('ok3-2')
                 return
