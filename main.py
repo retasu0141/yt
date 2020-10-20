@@ -583,6 +583,7 @@ def handle_message(event):
         flex_ = Flex(url)
         seve2(user_id,url[0])
         flex = {"type": "flex","altText": "YouTubeリンク","contents":flex_}
+        container_obj = FlexSendMessage.new_from_json_dict(flex)
         line_bot_api.reply_message(msg_from,messages=container_obj)
         return
 
@@ -634,7 +635,7 @@ def handle_message(event):
                 return
             except Exception as e:
                 print (str(e))
-                line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+                line_bot_api.reply_message(msg_from,TextSendMessage(text='コメントの設定に失敗したよ！'))
                 return
 
         if setting2[user_id]['setting3'] == True and user_id == setting_[user_id]['ID']:
@@ -650,7 +651,7 @@ def handle_message(event):
                 return
             except Exception as e:
                 print (str(e))
-                line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+                line_bot_api.reply_message(msg_from,TextSendMessage(text='アップに失敗したよ！'))
                 return
 
         else:
