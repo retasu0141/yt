@@ -505,7 +505,6 @@ def seve4(URL,point):
 
 
 def like(ID,data):
-    print(point)
     print(data[3])
     list_ = data[3].split(',')
     if ID in list_:
@@ -622,7 +621,8 @@ def handle_message(event):
                     return
         except Exception as e:
                     print (str(e))
-                    line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+                    items = {'items': [{'type': 'action','action': {'type': 'message','label': '布教する','text': '布教する'}},{'type': 'action','action': {'type': 'message','label': 'ゲットする','text': 'ゲットする'}}]}
+                    line_bot_api.reply_message(msg_from,TextSendMessage(text='新しい動画を探してたら\n「ゲットする」\nと送信してね！\n\n動画を布教する場合は\n「布教する」\nと送信してね！\n\n下のボタンからも送信できるよ！',quick_reply=items))
                     return
         if setting2[user_id]['setting2'] == True and user_id == setting_[user_id]['ID']:
             try:
@@ -655,8 +655,8 @@ def handle_message(event):
                 return
 
         else:
-            items = {'items': [{'type': 'action','action': {'type': 'message','label': '設定する','text': '設定する'}},{'type': 'action','action': {'type': 'message','label': 'メッセージ送信','text': 'メッセージ送信'}}]}
-            line_bot_api.reply_message(msg_from,TextSendMessage(text='表示する文字を設定したいときは\n「設定する」\nと送信してね！\n\nひとこと連絡を使う場合は\n「メッセージ送信」\nと送信してね！\n\n下のボタンからも送信できるよ！',quick_reply=items))
+            items = {'items': [{'type': 'action','action': {'type': 'message','label': '布教する','text': '布教する'}},{'type': 'action','action': {'type': 'message','label': 'ゲットする','text': 'ゲットする'}}]}
+            line_bot_api.reply_message(msg_from,TextSendMessage(text='新しい動画を探してたら\n「ゲットする」\nと送信してね！\n\n動画を布教する場合は\n「布教する」\nと送信してね！\n\n下のボタンからも送信できるよ！',quick_reply=items))
 
 
 
