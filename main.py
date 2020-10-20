@@ -179,7 +179,7 @@ def Flex(date):
     l = requests.Session().get('https://www.googleapis.com/youtube/v3/videos', params=payload)
     resp_dict = json.loads(l.content)
     title = resp_dict['items'][0]['snippet']['title']
-    sum_ = resp_dict['items'][0]['snippet']['thumbnails']['maxres']['url']
+    sum_ = resp_dict['items'][0]['snippet']['thumbnails']['standard']['url']
     data = {
   "type": "bubble",
   "hero": {
