@@ -510,9 +510,9 @@ def like(ID,data):
     if ID in data[3]:
         return False
     else:
-        point = data[2] + 1
+        point = int(data[2]) + 1
         seve3(data[0],data[3].append(ID))
-        seve4(data[0],point)
+        seve4(data[0],str(point))
         return True
 
 
@@ -641,7 +641,7 @@ def handle_message(event):
                 print('ok-13')
                 setting2[user_id]['setting3'] = False
                 setting_youtube[user_id]['ctg'] = msg_text
-                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],0,[user_id],setting_youtube[user_id]['ctg'])
+                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],'0',[user_id],setting_youtube[user_id]['ctg'])
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='アップできたよ！'))
                 return
             except Exception as e:
