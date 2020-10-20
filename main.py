@@ -463,21 +463,13 @@ def seve3(URL,id_list):
         cur.execute("ROLLBACK")
         conn.commit()
         cur.execute('SELECT * FROM ydb')
-        for row in cur:
-            if ID in row:
-                print(row)
-                dbID = row[0]
-                print('ok3-')
-                print(dbID)
-                cur.execute("UPDATE ydb SET point_id = '{id_list}' WHERE url='{url}';".format(id_list=id_list,url=URL))
-                conn.commit()
-                print('ok3-2-')
-                return
+        cur.execute("UPDATE ydb SET point_id = '{id_list}' WHERE url='{url}';".format(id_list=id_list,url=URL))
+        conn.commit()
+        print('ok3-2-')
+        return
         #cur.execute("UPDATE db SET name = '{name}' WHERE user_id='{user_id}';".format(name=ID2,user_id=ID+'Ms'))
         #cur.execute("insert into ydb values('{url}','{text}','{point}','{point_id}','{ctg}')".format(url=ID,text=URL,point='0',point_id='0',ctg='0'))
         #conn.commit()
-        print('error')
-        return
     except Exception as e:
         print (str(e))
         return
@@ -490,21 +482,13 @@ def seve4(URL,point):
         cur.execute("ROLLBACK")
         conn.commit()
         cur.execute('SELECT * FROM ydb')
-        for row in cur:
-            if ID in row:
-                print(row)
-                dbID = row[0]
-                print('-ok3-')
-                print(dbID)
-                cur.execute("UPDATE ydb SET point = '{point}' WHERE url='{url}';".format(point=point,url=URL))
-                conn.commit()
-                print('-ok3-2-')
-                return
+        cur.execute("UPDATE ydb SET point = '{point}' WHERE url='{url}';".format(point=point,url=URL))
+        conn.commit()
+        print('-ok3-2-')
+        return
         #cur.execute("UPDATE db SET name = '{name}' WHERE user_id='{user_id}';".format(name=ID2,user_id=ID+'Ms'))
         #cur.execute("insert into ydb values('{url}','{text}','{point}','{point_id}','{ctg}')".format(url=ID,text=URL,point='0',point_id='0',ctg='0'))
         #conn.commit()
-        print('error')
-        return
     except Exception as e:
         print (str(e))
         return
