@@ -507,11 +507,14 @@ def seve4(URL,point):
 def like(ID,data):
     print(point)
     print(data[3])
-    if ID in data[3]:
+    list_ = data[3].split(',')
+    if ID in list_:
         return False
     else:
+        list_.append(ID)
+        str_ = ','.join(list_)
         point = int(data[2]) + 1
-        seve3(data[0],data[3].append(ID))
+        seve3(data[0],str_)
         seve4(data[0],str(point))
         return True
 
@@ -639,9 +642,10 @@ def handle_message(event):
                 print('ok-13')
                 setting2[user_id]['setting3'] = False
                 setting_youtube[user_id]['ctg'] = msg_text
-                id_list = []
+                id_list = ['test']
                 id_list.append(user_id)
-                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],"0",id_list,setting_youtube[user_id]['ctg'])
+                id_list_str = ','.join(id_list)
+                youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],"0",id_list_str,setting_youtube[user_id]['ctg'])
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='アップできたよ！'))
                 return
             except Exception as e:
