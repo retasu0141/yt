@@ -217,7 +217,7 @@ def Flex(date):
           {
             "type": "icon",
             "size": "sm",
-            "url": "https://www.flaticon.com/svg/static/icons/svg/126/126473.svg"
+            "url": "https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-10-256.png"
           },
           {
             "type": "text",
