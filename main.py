@@ -613,36 +613,40 @@ def handle_message(event):
                             setting_youtube[user_id] = {'url':URL,'text':'','ctg':''}
                             setting2[user_id]['setting2'] = True
                             line_bot_api.reply_message(msg_from,TextSendMessage(text='URLを設定したよ！\n次はURLの動画についてのコメントを送信してね！！'))
+                            return
                 except Exception as e:
                     print (str(e))
+                    return
         except Exception as e:
                     print (str(e))
                     line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+                    return
         if setting2[user_id]['setting2'] == True and user_id == setting_[user_id]['ID']:
-            setting2[user_id]['setting2'] = False
-            setting2[user_id]['setting3'] = True
-        if setting2[user_id]['setting3'] == True and user_id == setting_[user_id]['ID']:
             try:
                 print('ok-12')
                 setting_youtube[user_id]['text'] = msg_text
-                setting2[user_id]['setting3'] = False
-                setting2[user_id]['setting4'] = True
+                setting2[user_id]['setting2'] = False
+                setting2[user_id]['setting3'] = True
                 items = {'items': [{'type': 'action','action': {'type': 'message','label': '音楽','text': '音楽'}},{'type': 'action','action': {'type': 'message','label': 'おもしろ','text': 'おもしろ'}},{'type': 'action','action': {'type': 'message','label': 'VTuber','text': 'VTuber'}}]}
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='コメントを設定できたよ！\n次は動画のカテゴリーを決めて送信してね！\nカテゴリーは好きに作れるよ！\n\n迷ったときは下のボタンからも送信できるよ！',quick_reply=items))
+                return
             except Exception as e:
                 print (str(e))
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+                return
 
-        if setting2[user_id]['setting4'] == True and user_id == setting_[user_id]['ID']:
+        if setting2[user_id]['setting3'] == True and user_id == setting_[user_id]['ID']:
             try:
                 print('ok-13')
-                setting2[user_id]['setting4'] = False
+                setting2[user_id]['setting3'] = False
                 setting_youtube[user_id]['ctg'] = msg_text
                 youtube_set(setting_youtube[user_id]['url'],setting_youtube[user_id]['text'],0,[user_id],setting_youtube[user_id]['ctg'])
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='アップできたよ！'))
+                return
             except Exception as e:
                 print (str(e))
                 line_bot_api.reply_message(msg_from,TextSendMessage(text='失敗！'))
+                return
 
         else:
             items = {'items': [{'type': 'action','action': {'type': 'message','label': '設定する','text': '設定する'}},{'type': 'action','action': {'type': 'message','label': 'メッセージ送信','text': 'メッセージ送信'}}]}
